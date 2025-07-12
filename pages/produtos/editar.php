@@ -1,4 +1,3 @@
-
 <?php
 require_once __DIR__ . '/../../services/authService.php';
 requireAdmin();
@@ -35,7 +34,7 @@ require_once __DIR__ . '/../template/header.php';
 <form action="acoes.php" method="POST">
     <input type="hidden" name="acao" value="editar">
     <input type="hidden" name="id" value="<?= $produto->getId() ?>">
-    
+
     <div class="form-group">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($produto->getNome()) ?>" required>
@@ -47,6 +46,10 @@ require_once __DIR__ . '/../template/header.php';
     <div class="form-group">
         <label for="preco">Preço:</label>
         <input type="number" id="preco" name="preco" step="0.01" value="<?= htmlspecialchars($produto->getPreco()) ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="imagem_url">URL da Imagem:</label>
+        <input type="text" id="imagem_url" name="imagem_url" value="<?= htmlspecialchars($produto->getImagemUrlDb()) ?>" placeholder="Deixe em branco para nenhuma imagem">
     </div>
     <div class="form-group">
         <label for="categoria_id">Categoria:</label>

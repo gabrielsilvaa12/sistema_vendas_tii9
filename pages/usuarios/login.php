@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_token'] = $token;
             
             // Redireciona para a página que o usuário tentou acessar ou para o index
-            $redirect_url = $_SESSION['redirect_url'] ?? '/sistema_vendas/index.php';
+            $redirect_url = $_SESSION['redirect_url'] ?? '/sistema_vendas_tii09/index.php';
             unset($_SESSION['redirect_url']); // Limpa a URL da sessão
             
             header('Location: ' . $redirect_url);
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 require_once __DIR__ . '/../template/header.php';
 ?>
+
 
 <h1>Login</h1>
 

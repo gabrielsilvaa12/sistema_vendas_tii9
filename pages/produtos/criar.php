@@ -29,15 +29,14 @@ require_once __DIR__ . '/../template/header.php';
         <label for="preco">Preço:</label>
         <input type="number" id="preco" name="preco" step="0.01" required>
     </div>
+
+    <div class="form-group">
+        <label for="imagem_url">URL da Imagem:</label>
+        <input type="text" id="imagem_url" name="imagem_url" placeholder="https://exemplo.com/imagem.jpg">
+    </div>
     <div class="form-group">
         <label for="categoria_id">Categoria:</label>
-        <select id="categoria_id" name="categoria_id">
-            <option value="">Selecione uma categoria</option>
-            <?php foreach ($categorias as $categoria): ?>
-                <option value="<?= $categoria->getId() ?>"><?= htmlspecialchars($categoria->getNome()) ?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
+        </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
     <a href="index.php" class="btn btn-secondary">Cancelar</a>
 </form>

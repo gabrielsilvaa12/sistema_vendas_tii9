@@ -8,26 +8,51 @@ class Produto extends Entidade
     private ?string $descricao;
     private float $preco;
     private ?Categoria $categoria;
+    private ?string $imagemUrl;
 
     public function __construct(
-        ?int $id, string $nome, ?string $descricao, float $preco, ?Categoria $categoria, bool $ativo = true, 
-        ?string $dataCriacao = null, ?string $dataAtualizacao = null, ?Usuario $usuarioAtualizacao = null,
-        ?string $imagemUrl = null
+        ?int $id,
+        string $nome,
+        ?string $descricao,
+        float $preco,
+        ?Categoria $categoria,
+        ?string $imagemUrl = null,
+        bool $ativo = true,
+        ?string $dataCriacao = null,
+        ?string $dataAtualizacao = null,
+        ?Usuario $usuarioAtualizacao = null,
     ) {
         parent::__construct($id, $ativo, $dataCriacao, $dataAtualizacao, $usuarioAtualizacao);
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->preco = $preco;
         $this->categoria = $categoria;
+        $this->imagemUrl = $imagemUrl;
     }
 
-    public function getNome(): string { return $this->nome; }
-    public function getDescricao(): ?string { return $this->descricao; }
-    public function getPreco(): float { return $this->preco; }
-    public function getCategoria(): ?Categoria { return $this->categoria; }
-
-    public function getImagemUrl(): string 
+    public function getNome(): string
     {
-        return $this->imagemUrl ?? 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+        return $this->nome;
+    }
+    public function getDescricao(): ?string
+    {
+        return $this->descricao;
+    }
+    public function getPreco(): float
+    {
+        return $this->preco;
+    }
+    public function getCategoria(): ?Categoria
+    {
+        return $this->categoria;
+    }
+    public function getImagemUrlDb(): ?string
+    {
+        return $this->imagemUrl;
+    }
+
+    public function getImagemUrlExibicao(): string 
+    {
+        return $this->imagemUrl ?? '/sistema_vendas_tii09/public/img/produto_default.png';
     }
 }

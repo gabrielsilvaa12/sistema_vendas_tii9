@@ -34,6 +34,7 @@ class ProdutoDAO
             $row['descricao'],
             (float)$row['preco'],
             $categoria,
+            $row['imagem_url'],
             (bool)$row['ativo'],
             $row['data_criacao'],
             $row['data_atualizacao'],
@@ -43,8 +44,8 @@ class ProdutoDAO
 
     public function create(Produto $produto, int $usuarioId): bool
     {
-        $sql = "INSERT INTO produto (nome, descricao, preco, categoria_id, usuario_atualizacao) 
-                VALUES (:nome, :descricao, :preco, :categoria_id, :user_id)";
+        $sql = "INSERT INTO produto (nome, descricao, preco, categoria_id, imagem_url, usuario_atualizacao) 
+                VALUES (:nome, :descricao, :preco, :categoria_id, :imagem_url, :user_id)";
         $stmt = $this->db->prepare($sql);
 
         $categoriaId = $produto->getCategoria() ? $produto->getCategoria()->getId() : null;
@@ -54,6 +55,7 @@ class ProdutoDAO
             ':descricao' => $produto->getDescricao(),
             ':preco' => $produto->getPreco(),
             ':categoria_id' => $categoriaId,
+            ':imagem_url' => $produto->getImagemUrlDb(),
             ':user_id' => $usuarioId
         ]);
     }
@@ -83,7 +85,8 @@ class ProdutoDAO
                     nome = :nome, 
                     descricao = :descricao, 
                     preco = :preco, 
-                    categoria_id = :categoria_id, 
+                    categoria_id = :categoria_id,
+                    imagem_url = :imagem_url,
                     ativo = :ativo,
                     usuario_atualizacao = :user_id 
                 WHERE id = :id";
@@ -97,6 +100,7 @@ class ProdutoDAO
             ':descricao' => $produto->getDescricao(),
             ':preco' => $produto->getPreco(),
             ':categoria_id' => $categoriaId,
+            ':imagem_url' => $produto->getImagemUrlDb(),
             ':ativo' => (int)$produto->isAtivo(),
             ':user_id' => $usuarioId
         ]);

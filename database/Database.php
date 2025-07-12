@@ -8,12 +8,14 @@ class Database
     {
         if (self::$instance === null) {
             $db_host = "localhost";
+            $db_port = "3307"; // <<<--- CORREÇÃO IMPORTANTE
             $db_name = "sistema_vendas";
             $db_user = "root";
-            $db_pass = "";
+            $db_pass = "root"; // <<<--- SENHA CORRETA
 
             try {
-                self::$instance = new PDO("mysql:host={$db_host};dbname={$db_name};charset=utf8", $db_user, $db_pass);
+                // Adicionamos a porta na string de conexão
+                self::$instance = new PDO("mysql:host={$db_host};port={$db_port};dbname={$db_name};charset=utf8", $db_user, $db_pass);
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             } catch (PDOException $e) {

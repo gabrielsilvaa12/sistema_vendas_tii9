@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($dao->create($usuario, 1)) { // Supõe adminId=1 para criação
                 $_SESSION['user_token'] = $token;
-                header('Location: /sistema_vendas/index.php');
+                header('Location: /sistema_vendas_tii09_tii09/');
                 exit();
             } else {
                 $erro = "Ocorreu um erro ao realizar o cadastro. Tente novamente.";

@@ -1,6 +1,6 @@
 -- Criação do banco de dados
-CREATE DATABASE IF NOT EXISTS sistema_vendas;
-USE sistema_vendas;
+CREATE DATABASE IF NOT EXISTS sistema_vendas_tii09;
+USE sistema_vendas_tii09;
 
 -- Tabela usuario (unifica clientes e administradores)
 CREATE TABLE IF NOT EXISTS usuario (
